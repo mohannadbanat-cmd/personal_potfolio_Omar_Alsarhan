@@ -203,6 +203,24 @@ img {
     width: 100%;
 }
 
+.navbar .nav-pdf-btn {
+    color: var(--gold);
+    border: 1px solid var(--border-gold);
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.navbar .nav-pdf-btn::after {
+    display: none;
+}
+
+.navbar .nav-pdf-btn:hover {
+    background: var(--gold);
+    color: var(--bg-primary);
+}
+
 #menu-icon {
     font-size: 2rem;
     color: var(--text-primary);
@@ -1363,4 +1381,122 @@ img {
     .risk-section { padding: 36px 20px; }
     .vision-card { padding: 32px 24px; }
     .hero-image { width: 250px; }
+}
+
+/* ============================================================
+   PRINT STYLESHEET (CLEAN EXECUTIVE OUTPUT FOR WEBSITE PAGES)
+   ============================================================ */
+@media print {
+    @page {
+        size: A4 portrait;
+        margin: 12mm 15mm;
+    }
+
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+        animation: none !important;
+        transition: none !important;
+    }
+
+    body {
+        background: #080c14 !important;
+        color: #f8fafc !important;
+        font-size: 9.5pt !important;
+        line-height: 1.5 !important;
+    }
+
+    /* Hide non-printable web interactive elements and decorative gradient overlays */
+    .header,
+    .nav-toggle,
+    #menu-icon,
+    .hero-particles,
+    .hero-scroll-indicator,
+    .hero-cta,
+    .hero-socials,
+    .contact-form,
+    .floating-card,
+    .footer-bottom,
+    .scroll-top,
+    .hero::before,
+    .hero::after,
+    .hero-image-glow {
+        display: none !important;
+    }
+
+    .hero {
+        padding: 20px 0 !important;
+        min-height: auto !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    .hero-content {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        gap: 20px !important;
+    }
+
+    .hero-text {
+        max-width: 65% !important;
+    }
+
+    .hero-image {
+        width: 180px !important;
+        display: block !important;
+    }
+
+    .hero-image-wrapper {
+        border-radius: 12px !important;
+        border: 1px solid rgba(212, 175, 55, 0.4) !important;
+        overflow: hidden !important;
+    }
+
+    .hero-image-wrapper img {
+        width: 100% !important;
+        height: auto !important;
+        display: block !important;
+    }
+
+    section {
+        padding: 25px 0 !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    .section-header {
+        margin-bottom: 18px !important;
+    }
+
+    .expertise-grid,
+    .stats-grid,
+    .vision-grid,
+    .risk-grid,
+    .goals-grid {
+        gap: 15px !important;
+    }
+
+    .expertise-card,
+    .timeline-item,
+    .vision-card,
+    .risk-card,
+    .stat-card {
+        background: #0e1524 !important;
+        border: 1px solid rgba(212, 175, 55, 0.25) !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+        box-sizing: border-box !important;
+    }
+
+    .timeline-tree::before {
+        background: rgba(212, 175, 55, 0.3) !important;
+    }
+
+    .timeline-dot {
+        background: #d4af37 !important;
+    }
 }

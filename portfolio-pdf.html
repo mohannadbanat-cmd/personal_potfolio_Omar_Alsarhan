@@ -893,9 +893,162 @@
             text-decoration: none;
             font-weight: 600;
         }
+
+        /* ============================================================
+           EXECUTIVE ACTION BAR (SCREEN ONLY, HIDDEN IN PRINT)
+           ============================================================ */
+        .executive-action-bar {
+            width: 100%;
+            background: #0b111e;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+            padding: 14px 20px 10px;
+            font-family: var(--font-sans);
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.6);
+            margin-bottom: 24px;
+        }
+
+        .action-bar-inner {
+            max-width: 210mm;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .action-bar-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .action-bar-info strong {
+            color: #ffffff;
+            font-size: 11pt;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .action-bar-info span {
+            color: var(--gold-light);
+            font-size: 8.5pt;
+        }
+
+        .action-bar-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 9.2pt;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, #d4af37 0%, #f5d77f 100%);
+            color: #070a10 !important;
+            border: none;
+            box-shadow: 0 2px 10px rgba(212, 175, 55, 0.35);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.05);
+            color: #f8fafc;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--gold);
+        }
+
+        .action-bar-tip {
+            max-width: 210mm;
+            margin: 8px auto 0;
+            padding-top: 8px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 7.8pt;
+            color: #94a3b8;
+            line-height: 1.4;
+        }
+
+        .action-bar-tip strong {
+            color: var(--gold-pale);
+        }
+
+        .action-bar-tip em {
+            color: #ffffff;
+            font-style: normal;
+            text-decoration: underline;
+        }
+
+        @media print {
+            .no-print, .executive-action-bar {
+                display: none !important;
+            }
+            body {
+                background: #080c14 !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .page {
+                box-shadow: none !important;
+                margin: 0 !important;
+                page-break-after: always !important;
+                break-after: page !important;
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            .page:last-child {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+            }
+        }
     </style>
 </head>
 <body>
+
+    <!-- Executive Action Bar (Screen Only) -->
+    <div class="executive-action-bar no-print">
+        <div class="action-bar-inner">
+            <div class="action-bar-info">
+                <strong>Omar Al-Sarhan — Executive Dossier &amp; Portfolio</strong>
+                <span>Official 4-Page Executive Edition &bull; Verified Studio Quality</span>
+            </div>
+            <div class="action-bar-actions">
+                <a href="Omar_Al-Sarhan_Executive_Portfolio.pdf" download="Omar_Al-Sarhan_Executive_Portfolio.pdf" class="btn-action btn-gold">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    Download Official PDF (Vector)
+                </a>
+                <button onclick="window.print()" class="btn-action btn-outline">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                    Print Document
+                </button>
+            </div>
+        </div>
+        <div class="action-bar-tip">
+            <span>💡 <strong>Browser Print Tip:</strong> For 100% clean output without browser URLs or timestamps, uncheck <em>"Headers and footers"</em> in your print dialog. Or click <strong>"Download Official PDF"</strong> above for the pre-rendered studio vector document.</span>
+        </div>
+    </div>
 
     <!-- ========================================================
          PAGE 1: COVER / EXECUTIVE OVERVIEW
