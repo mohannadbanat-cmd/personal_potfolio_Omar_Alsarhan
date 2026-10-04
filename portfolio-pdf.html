@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Omar Al-Sarhan — Personal Portfolio</title>
+    <!-- Local TrueType Google Fonts (Offline & Print Vector Embedding) -->
+    <link rel="stylesheet" href="assets/fonts/fonts-ttf.css">
+    <!-- Local Base64 Google Fonts Fallback -->
+    <link rel="stylesheet" href="assets/fonts/fonts-base64.css">
+    <!-- Google Fonts Fallback -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================================
+           PRINT & PAGE SETUP (A4 EXACT SPECIFICATIONS: 210mm x 297mm)
+           ============================================================ */
+        @page {
+            size: A4 portrait;
+            margin: 0;
+        }
+
+        :root {
+            --bg-dark: #070a10;
+            --bg-page: #080c14;
+            --bg-card: rgba(14, 21, 34, 0.9);
+            --bg-card-hover: #121a2b;
+            --gold: #d4af37;
+            --gold-light: #f5d77f;
+            --gold-pale: #fae8b4;
+            --gold-dark: #9e7b16;
+            --gold-gradient: linear-gradient(135deg, #d4af37 0%, #f5d77f 50%, #b8941e 100%);
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+            --text-muted: #64748b;
+            --border-gold: rgba(212, 175, 55, 0.3);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --font-serif: 'Playfair Display', 'Didot', 'Bodoni MT', 'Cinzel', 'Georgia', serif;
+            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        html, body {
+            width: 210mm;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            font-size: 9.2pt;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            margin: 0 auto;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            min-height: 297mm;
+            max-height: 297mm;
+            position: relative;
+            page-break-after: always;
+            page-break-inside: avoid;
+            overflow: hidden;
+            background-color: var(--bg-page);
+            background: #080c14;
+            padding: 14mm 16mm 13mm;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .page:last-child {
+            page-break-after: avoid;
+        }
+
+        /* Top luxury gold bar */
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gold-gradient);
+            z-index: 10;
+        }
+
+        /* Watermark background numbers */
+        .page-watermark {
+            position: absolute;
+            bottom: 30mm;
+            right: -10mm;
+            font-family: var(--font-serif);
+            font-size: 120pt;
+            font-weight: 800;
+            color: rgba(212, 175, 55, 0.015);
+            pointer-events: none;
+            line-height: 1;
+            z-index: 0;
+            letter-spacing: -0.05em;
+        }
+
+        /* Top Header for Content Pages */
+        .doc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 3.5mm;
+            border-bottom: 1px solid var(--border-subtle);
+            margin-bottom: 4.5mm;
+            position: relative;
+            z-index: 2;
+        }
+
+        .doc-header-brand {
+            font-family: var(--font-serif);
+            font-size: 11pt;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: var(--text-main);
+        }
+
+        .doc-header-brand span {
+            color: var(--gold);
+        }
+
+        .doc-header-tag {
+            font-size: 7.2pt;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* Bottom Footer for Content Pages */
+        .doc-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 3.5mm;
+            border-top: 1px solid var(--border-subtle);
+            font-size: 7.2pt;
+            color: var(--text-muted);
+            position: relative;
+            z-index: 2;
+        }
+
+        .doc-footer-left {
+            letter-spacing: 0.04em;
+        }
+
+        .doc-footer-right {
+            color: var(--gold);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5 {
+            font-family: var(--font-serif);
+            color: var(--text-main);
+        }
+
+        .section-eyebrow {
+            font-family: var(--font-sans);
+            font-size: 7.5pt;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 1.5mm;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .section-eyebrow::after {
+            content: '';
+            display: inline-block;
+            width: 22px;
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.5;
+        }
+
+        .section-title {
+            font-size: 18pt;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 3.5mm;
+            letter-spacing: -0.01em;
+        }
+
+        .section-title span {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        /* Grid Utilities */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4.5mm;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3.5mm;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3mm;
+        }
+
+        /* Reusable Card */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 4mm;
+            padding: 4mm 4.5mm;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-gold {
+            border-color: var(--border-gold);
+            background: linear-gradient(145deg, rgba(212, 175, 55, 0.05) 0%, rgba(14, 21, 35, 0.9) 100%);
+        }
+
+        /* Content Body flex container to fill space */
+        .content-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 4mm;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ============================================================
+           PAGE 1: COVER / EXECUTIVE DOSSIER
+           ============================================================ */
+        .cover-page {
+            padding: 14mm 16mm 13mm;
+        }
+
+        .cover-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cover-badge {
+            display: inline-block;
+            font-size: 7.2pt;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            padding: 1.8mm 4.5mm;
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid var(--border-gold);
+            border-radius: 50px;
+            font-weight: 700;
+        }
+
+        .cover-year {
+            font-size: 7.8pt;
+            color: var(--text-sub);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .cover-main {
+            display: grid;
+            grid-template-columns: 1.25fr 0.75fr;
+            gap: 6mm;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            margin: 2mm 0;
+        }
+
+        /* SOLID CRISP TEXT — ZERO BACKGROUND-CLIP TO PREVENT PDF ARTIFACTS */
+        .cover-name {
+            font-size: 32pt;
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            margin-bottom: 2.5mm;
+            color: #ffffff;
+        }
+
+        .cover-name .gold-part {
+            color: var(--gold-light);
+        }
+
+        .cover-title-primary {
+            font-size: 12pt;
+            font-weight: 700;
+            color: var(--gold-light);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 2mm;
+        }
+
+        .cover-title-secondary {
+            font-size: 9.8pt;
+            font-weight: 500;
+            color: #cbd5e1;
+            margin-bottom: 5mm;
+            letter-spacing: 0.02em;
+        }
+
+        .cover-title-secondary span {
+            color: var(--gold);
+            padding: 0 4px;
+        }
+
+        .cover-bio {
+            color: #cbd5e1;
+            font-size: 9pt;
+            line-height: 1.6;
+            margin-bottom: 5mm;
+            border-left: 2.5px solid var(--gold);
+            padding-left: 4.5mm;
+            background: rgba(255, 255, 255, 0.015);
+            padding-top: 2mm;
+            padding-bottom: 2mm;
+            border-radius: 0 3mm 3mm 0;
+        }
+
+        .cover-bio strong {
+            color: var(--gold-pale);
+        }
+
+        /* Focus Pills */
+        .focus-pills {
+            display: flex;
+            gap: 2mm;
+            flex-wrap: wrap;
+            margin-bottom: 5mm;
+        }
+
+        .focus-pill {
+            font-size: 7.2pt;
+            color: var(--text-sub);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-subtle);
+            border-radius: 50px;
+            padding: 1.2mm 3.2mm;
+            font-weight: 500;
+        }
+
+        .cover-image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cover-image-wrapper {
+            width: 70mm;
+            height: 94mm;
+            border-radius: 5.5mm;
+            overflow: hidden;
+            border: 1.5px solid var(--border-gold);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+            background: #0f1523;
+            position: relative;
+        }
+
+        .cover-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .cover-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3.5mm;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 3.5mm;
+            padding: 3.5mm 3mm;
+            text-align: center;
+        }
+
+        .stat-box .num {
+            font-family: var(--font-serif);
+            font-size: 15pt;
+            font-weight: 700;
+            color: var(--gold-light);
+            line-height: 1.1;
+        }
+
+        .stat-box .label {
+            font-size: 6.8pt;
+            color: var(--text-sub);
+            margin-top: 1mm;
+            line-height: 1.25;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+
+        .cover-contact-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3mm;
+            background: rgba(14, 21, 35, 0.95);
+            border: 1px solid var(--border-gold);
+            border-radius: 3.5mm;
+            padding: 3.5mm 4mm;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cover-contact-col {
+            text-align: center;
+        }
+
+        .cover-contact-col strong {
+            color: var(--gold);
+            display: block;
+            font-size: 6.8pt;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.5mm;
+            font-weight: 700;
+        }
+
+        .cover-contact-col span {
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 7.8pt;
+        }
+
+        /* ============================================================
+           PAGE 2: ABOUT, EXECUTIVE SUMMARY & EXPERIENCE
+           ============================================================ */
+        .story-text {
+            color: #cbd5e1;
+            font-size: 8.8pt;
+            line-height: 1.55;
+            margin-bottom: 2.5mm;
+        }
+
+        .story-text strong {
+            color: var(--gold-pale);
+            font-weight: 600;
+        }
+
+        .meta-pill-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5mm;
+            margin-top: 3.5mm;
+        }
+
+        .meta-pill {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-subtle);
+            border-radius: 2.8mm;
+            padding: 2.5mm 3mm;
+        }
+
+        .meta-pill-label {
+            font-size: 6.8pt;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+        }
+
+        .meta-pill-val {
+            font-size: 8.2pt;
+            color: var(--text-main);
+            font-weight: 600;
+            margin-top: 0.8mm;
+        }
+
+        /* Timeline in PDF */
+        .timeline-block {
+            display: flex;
+            flex-direction: column;
+            gap: 3.5mm;
+        }
+
+        .timeline-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-left: 3px solid var(--gold);
+            border-radius: 3.5mm;
+            padding: 3.5mm 4mm;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1mm;
+        }
+
+        .timeline-role {
+            font-size: 10.5pt;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .timeline-badge {
+            font-size: 7pt;
+            background: rgba(212, 175, 55, 0.12);
+            color: var(--gold-light);
+            padding: 0.8mm 2.5mm;
+            border-radius: 50px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-company {
+            font-size: 8pt;
+            color: var(--gold);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 1.8mm;
+        }
+
+        .timeline-bullets {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.4mm;
+        }
+
+        .timeline-bullets li {
+            font-size: 8pt;
+            color: var(--text-sub);
+            position: relative;
+            padding-left: 3.8mm;
+            line-height: 1.42;
+        }
+
+        .timeline-bullets li::before {
+            content: '▪';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 8.5pt;
+            line-height: 1;
+        }
+
+        .timeline-bullets li strong {
+            color: var(--text-main);
+        }
+
+        /* Bottom Scope Grid on Page 2 */
+        .scope-strip {
+            background: var(--bg-card);
+            border: 1px solid var(--border-gold);
+            border-radius: 3.5mm;
+            padding: 3.5mm 4.5mm;
+        }
+
+        .scope-title {
+            font-size: 8pt;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 2mm;
+        }
+
+        .scope-item h5 {
+            font-family: var(--font-sans);
+            font-size: 8.2pt;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.8mm;
+        }
+
+        .scope-item p {
+            font-size: 7.4pt;
+            color: var(--text-sub);
+            line-height: 1.4;
+        }
+
+        /* ============================================================
+           PAGE 3: EXPERTISE & QUANTITATIVE TRACK RECORD
+           ============================================================ */
+        .expertise-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 3.8mm;
+            padding: 3.8mm 4mm;
+            position: relative;
+        }
+
+        .expertise-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 4mm;
+            width: 25mm;
+            height: 2px;
+            background: var(--gold-gradient);
+            border-radius: 2px;
+        }
+
+        .expertise-icon-label {
+            font-size: 7pt;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 1mm;
+        }
+
+        .expertise-title {
+            font-size: 10pt;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 1.5mm;
+        }
+
+        .expertise-desc {
+            font-size: 7.8pt;
+            color: var(--text-sub);
+            line-height: 1.48;
+        }
+
+        /* Method Bar Chart for PDF */
+        .method-row {
+            margin-bottom: 2.5mm;
+        }
+
+        .method-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 7.8pt;
+            margin-bottom: 0.8mm;
+        }
+
+        .method-name {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .method-pct {
+            font-weight: 700;
+            color: var(--gold-light);
+            font-family: var(--font-serif);
+        }
+
+        .method-track {
+            height: 4.5px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .method-fill {
+            height: 100%;
+            background: var(--gold-gradient);
+            border-radius: 10px;
+        }
+
+        /* VIP Broker Card on Page 3 */
+        .broker-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.06) 0%, rgba(14, 21, 35, 0.9) 100%);
+            border: 1px solid var(--border-gold);
+            border-radius: 3.8mm;
+            padding: 3.5mm 4.5mm;
+            display: flex;
+            align-items: center;
+            gap: 4.5mm;
+        }
+
+        .broker-badge-icon {
+            font-family: var(--font-serif);
+            font-size: 18pt;
+            font-weight: 800;
+            color: var(--gold-light);
+            min-width: 14mm;
+            text-align: center;
+            border-right: 1px solid var(--border-gold);
+            padding-right: 3mm;
+            line-height: 1.1;
+        }
+
+        .broker-badge-icon small {
+            display: block;
+            font-size: 6.8pt;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--gold);
+            font-family: var(--font-sans);
+            font-weight: 700;
+        }
+
+        .broker-content h4 {
+            font-size: 9.5pt;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.8mm;
+        }
+
+        .broker-content p {
+            font-size: 7.8pt;
+            color: #cbd5e1;
+            line-height: 1.45;
+        }
+
+        /* Callout Box */
+        .callout-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 3.8mm;
+            padding: 3.5mm 4mm;
+            display: flex;
+            align-items: center;
+            gap: 3.5mm;
+        }
+
+        .callout-stat {
+            font-family: var(--font-serif);
+            font-size: 16pt;
+            font-weight: 800;
+            color: var(--gold-light);
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .callout-text {
+            font-size: 7.8pt;
+            color: #cbd5e1;
+            line-height: 1.45;
+        }
+
+        /* ============================================================
+           PAGE 4: RISK PHILOSOPHY, STRATEGIC VISION & CONTACT
+           ============================================================ */
+        .risk-highlight {
+            background: rgba(212, 175, 55, 0.06);
+            border: 1.5px solid var(--border-gold);
+            border-radius: 4mm;
+            padding: 3.8mm 4.5mm;
+        }
+
+        .risk-badge-large {
+            display: inline-block;
+            background: var(--gold);
+            color: #070a10;
+            font-size: 7.2pt;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            padding: 1.2mm 3.2mm;
+            border-radius: 50px;
+            margin-bottom: 2mm;
+        }
+
+        .risk-principle-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5mm;
+            margin-top: 2.5mm;
+        }
+
+        .risk-principle-card {
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid var(--border-subtle);
+            border-radius: 2.8mm;
+            padding: 2.5mm 3mm;
+        }
+
+        .risk-principle-card h5 {
+            font-family: var(--font-sans);
+            font-size: 7.8pt;
+            font-weight: 700;
+            color: var(--gold-light);
+            margin-bottom: 0.6mm;
+        }
+
+        .risk-principle-card p {
+            font-size: 7.2pt;
+            color: var(--text-sub);
+            line-height: 1.4;
+        }
+
+        .goals-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8mm;
+        }
+
+        .goal-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 3mm;
+            padding: 2mm 2.8mm;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 2.8mm;
+        }
+
+        .goal-idx {
+            font-family: var(--font-serif);
+            font-size: 10pt;
+            font-weight: 800;
+            color: var(--gold);
+            line-height: 1;
+            min-width: 5.5mm;
+        }
+
+        .goal-content h5 {
+            font-family: var(--font-sans);
+            font-size: 7.8pt;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.4mm;
+        }
+
+        .goal-content p {
+            font-size: 7.2pt;
+            color: var(--text-sub);
+            line-height: 1.35;
+        }
+
+        .contact-final-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(14, 21, 35, 0.95) 100%);
+            border: 1.5px solid var(--border-gold);
+            border-radius: 4.5mm;
+            padding: 4mm 5.5mm;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-left h4 {
+            font-size: 11.5pt;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.8mm;
+        }
+
+        .contact-left p {
+            font-size: 7.5pt;
+            color: var(--text-sub);
+        }
+
+        .contact-details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5mm 5mm;
+            text-align: right;
+        }
+
+        .contact-entry {
+            font-size: 7.5pt;
+        }
+
+        .contact-entry span {
+            color: var(--gold);
+            font-weight: 700;
+            display: block;
+            font-size: 6.5pt;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .contact-entry a, .contact-entry div {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========================================================
+         PAGE 1: COVER / EXECUTIVE OVERVIEW
+         ======================================================== -->
+    <section class="page cover-page">
+        <div class="page-watermark">OS</div>
+
+        <div class="cover-top">
+            <div class="cover-badge">Executive Portfolio &bull; 2024–2026</div>
+            <div class="cover-year">Amman, Jordan</div>
+        </div>
+
+        <div class="cover-main">
+            <div class="cover-text">
+                <div class="section-eyebrow">Personal Dossier</div>
+                <h1 class="cover-name">Omar <span class="gold-part">Al-Sarhan</span></h1>
+                <div class="cover-title-primary">International Business Operator</div>
+                <div class="cover-title-secondary">Founder &amp; CEO <span>|</span> Financial Markets Consultant</div>
+
+                <p class="cover-bio">
+                    Entrepreneurial visionary with 6+ years of specialized experience commanding Forex, Stocks, and Crypto markets. Founder of <strong>FINTEC</strong> and architect of disciplined, high-growth investment frameworks and international commercial partnerships.
+                </p>
+
+                <div class="focus-pills">
+                    <span class="focus-pill">Forex Trading</span>
+                    <span class="focus-pill">Crypto &amp; Digital Assets</span>
+                    <span class="focus-pill">Wealth Advisory</span>
+                    <span class="focus-pill">FINTEC Academy</span>
+                    <span class="focus-pill">Global Sales</span>
+                </div>
+            </div>
+
+            <div class="cover-image-container">
+                <div class="cover-image-wrapper">
+                    <img src="assets/hero-portrait.png" alt="Omar Al-Sarhan">
+                </div>
+            </div>
+        </div>
+
+        <div class="cover-stats">
+            <div class="stat-box">
+                <div class="num">$500K+</div>
+                <div class="label">Sales &amp; Investments</div>
+            </div>
+            <div class="stat-box">
+                <div class="num">250+</div>
+                <div class="label">Traders Mentored</div>
+            </div>
+            <div class="stat-box">
+                <div class="num">6+ Yrs</div>
+                <div class="label">Market Experience</div>
+            </div>
+            <div class="stat-box">
+                <div class="num">FINTEC</div>
+                <div class="label">Global Academy</div>
+            </div>
+        </div>
+
+        <div class="cover-contact-bar">
+            <div class="cover-contact-col">
+                <strong>Email Address</strong>
+                <span>omar.alsarhan141@gmail.com</span>
+            </div>
+            <div class="cover-contact-col">
+                <strong>Direct Phone</strong>
+                <span>+962 79 571 7232</span>
+            </div>
+            <div class="cover-contact-col">
+                <strong>Headquarters</strong>
+                <span>Amman, Jordan</span>
+            </div>
+            <div class="cover-contact-col">
+                <strong>LinkedIn Network</strong>
+                <span>linkedin.com/in/omar-alsarhan</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================
+         PAGE 2: EXECUTIVE SUMMARY & CAREER MILESTONES
+         ======================================================== -->
+    <section class="page">
+        <div class="page-watermark">01</div>
+
+        <header class="doc-header">
+            <div class="doc-header-brand">Omar Al-Sarhan<span>.</span></div>
+            <div class="doc-header-tag">01 / Background &amp; Leadership</div>
+        </header>
+
+        <div class="content-body">
+            <div>
+                <div class="section-eyebrow">Professional Profile</div>
+                <h2 class="section-title">Visionary Leadership in <span>Global Markets</span></h2>
+            </div>
+
+            <div class="grid-2">
+                <!-- Left: Biography & Education -->
+                <div>
+                    <div class="card" style="height: 100%;">
+                        <div class="section-eyebrow" style="margin-bottom: 2mm;">Executive Summary</div>
+                        <p class="story-text">
+                            For the past six years, <strong>Omar Al-Sarhan</strong> has operated as an international financial markets strategist and cross-border business developer across both on-ground and digital landscapes.
+                        </p>
+                        <p class="story-text">
+                            Having generated a substantial volume of institutional sales and investment capital, he has earned distinction as an expert in market penetration, private client consultation, and community scalability.
+                        </p>
+                        <p class="story-text">
+                            He founded several successful commercial enterprises, spearheaded by <strong>FINTEC</strong>, an elite educational institution dedicated to cultivating professional, disciplined traders globally.
+                        </p>
+
+                        <div class="meta-pill-grid">
+                            <div class="meta-pill">
+                                <div class="meta-pill-label">Academic Degree</div>
+                                <div class="meta-pill-val">B.Sc. Financial Technology</div>
+                            </div>
+                            <div class="meta-pill">
+                                <div class="meta-pill-label">Institution</div>
+                                <div class="meta-pill-val">Petra University, Amman</div>
+                            </div>
+                            <div class="meta-pill">
+                                <div class="meta-pill-label">Primary Markets</div>
+                                <div class="meta-pill-val">Forex, Crypto, Equities</div>
+                            </div>
+                            <div class="meta-pill">
+                                <div class="meta-pill-label">Core Specialization</div>
+                                <div class="meta-pill-val">Risk Control &amp; Wealth Mgt.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Career Milestones Timeline -->
+                <div>
+                    <div class="timeline-block">
+                        <div class="timeline-card card-gold">
+                            <div class="timeline-header">
+                                <div class="timeline-role">Founder &amp; CEO</div>
+                                <div class="timeline-badge">2020 — PRESENT</div>
+                            </div>
+                            <div class="timeline-company">FINTEC &bull; Global Trading Academy</div>
+                            <ul class="timeline-bullets">
+                                <li>Founded and scaled FINTEC from inception into an international educational powerhouse for professional traders.</li>
+                                <li>Architected end-to-end trading curricula spanning Technical Analysis, Algorithmic Trading, and Scalping.</li>
+                                <li>Instituted the firm’s signature <strong>3% Maximum Risk Rule</strong> to safeguard client capital and maximize risk-adjusted yields.</li>
+                                <li>Cultivated global broker alliances to secure exclusive, confidential VIP trading conditions for clients.</li>
+                            </ul>
+                        </div>
+
+                        <div class="timeline-card">
+                            <div class="timeline-header">
+                                <div class="timeline-role">Financial Markets Expert</div>
+                                <div class="timeline-badge">2019 — 2023</div>
+                            </div>
+                            <div class="timeline-company">iGENIUS &bull; International Markets</div>
+                            <ul class="timeline-bullets">
+                                <li>Generated over <strong>$500,000+</strong> in direct sales and investment capital across financial verticals.</li>
+                                <li>Conducted deep-dive macroeconomic research, asset evaluations, and investment stress tests.</li>
+                                <li>Engineered pro-forma financial models and structured advisory solutions for high-net-worth clients.</li>
+                                <li>Led international webinars and training seminars building high-performance sales teams.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lower Strip: Core Capabilities -->
+            <div class="scope-strip">
+                <div class="scope-title">Core Strategic Competencies</div>
+                <div class="grid-4">
+                    <div class="scope-item">
+                        <h5>Capital Management</h5>
+                        <p>Disciplined allocation frameworks engineered for preservation and growth.</p>
+                    </div>
+                    <div class="scope-item">
+                        <h5>Cross-Border Sales</h5>
+                        <p>Proven track record building and leading high-velocity commercial networks.</p>
+                    </div>
+                    <div class="scope-item">
+                        <h5>Market Penetration</h5>
+                        <p>Strategic positioning and expansion across emerging financial hubs.</p>
+                    </div>
+                    <div class="scope-item">
+                        <h5>Executive Advisory</h5>
+                        <p>Bespoke consultations solving high-stakes liquidity and portfolio dilemmas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="doc-footer">
+            <div class="doc-footer-left">Omar Al-Sarhan &bull; International Business Operator</div>
+            <div class="doc-footer-right">PAGE 02</div>
+        </footer>
+    </section>
+
+    <!-- ========================================================
+         PAGE 3: EXPERTISE & QUANTITATIVE TRACK RECORD
+         ======================================================== -->
+    <section class="page">
+        <div class="page-watermark">02</div>
+
+        <header class="doc-header">
+            <div class="doc-header-brand">Omar Al-Sarhan<span>.</span></div>
+            <div class="doc-header-tag">02 / Expertise &amp; Track Record</div>
+        </header>
+
+        <div class="content-body">
+            <div>
+                <div class="section-eyebrow">Areas of Mastery</div>
+                <h2 class="section-title">Institutional Capabilities &amp; <span>Execution</span></h2>
+            </div>
+
+            <!-- 4 Pillars of Expertise -->
+            <div class="grid-2">
+                <div class="expertise-card">
+                    <div class="expertise-icon-label">Asset Class I</div>
+                    <div class="expertise-title">Forex Market Mastery</div>
+                    <p class="expertise-desc">
+                        Deep institutional expertise in global currency markets. Combines multi-timeframe technical momentum with macroeconomic fundamentals and automated algorithmic risk checkpoints.
+                    </p>
+                </div>
+
+                <div class="expertise-card">
+                    <div class="expertise-icon-label">Asset Class II</div>
+                    <div class="expertise-title">Crypto &amp; Digital Asset Custody</div>
+                    <p class="expertise-desc">
+                        Holistic digital asset portfolio design. Expertise covers cold/hot storage architecture, decentralized finance (DeFi) mechanisms, and systematic trend capture in crypto cycles.
+                    </p>
+                </div>
+
+                <div class="expertise-card">
+                    <div class="expertise-icon-label">Advisory Practice</div>
+                    <div class="expertise-title">Tailor-Made Wealth Consulting</div>
+                    <p class="expertise-desc">
+                        Private client advisory designed to solve strategic liquidity and allocation dilemmas. Focuses on capital preservation, structured growth, and long-term multi-asset sustainability.
+                    </p>
+                </div>
+
+                <div class="expertise-card">
+                    <div class="expertise-icon-label">Commercial Leadership</div>
+                    <div class="expertise-title">International Business &amp; Sales</div>
+                    <p class="expertise-desc">
+                        Proven record building and leading high-velocity commercial teams. Expertise in strategic market penetration, high-stakes contract negotiation, and scaling global sales networks.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Quantitative Methodologies & Performance -->
+            <div class="card card-gold">
+                <div class="section-eyebrow">Methodology Validation</div>
+                <h3 style="font-size: 11.5pt; margin-bottom: 2.8mm; font-weight: 700;">Proprietary Trading Framework Success Metrics</h3>
+
+                <div class="grid-2">
+                    <div>
+                        <div class="method-row">
+                            <div class="method-info">
+                                <span class="method-name">Technical Analysis</span>
+                                <span class="method-pct">92%</span>
+                            </div>
+                            <div class="method-track">
+                                <div class="method-fill" style="width: 92%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="method-row">
+                            <div class="method-info">
+                                <span class="method-name">Fundamental Macro Integration</span>
+                                <span class="method-pct">88%</span>
+                            </div>
+                            <div class="method-track">
+                                <div class="method-fill" style="width: 88%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="method-row">
+                            <div class="method-info">
+                                <span class="method-name">Algorithmic &amp; Systematic Models</span>
+                                <span class="method-pct">85%</span>
+                            </div>
+                            <div class="method-track">
+                                <div class="method-fill" style="width: 85%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="method-row">
+                            <div class="method-info">
+                                <span class="method-name">Scalping &amp; High-Frequency Precision</span>
+                                <span class="method-pct">78%</span>
+                            </div>
+                            <div class="method-track">
+                                <div class="method-fill" style="width: 78%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIP Broker & Institutional Alliances Card -->
+            <div class="broker-card">
+                <div class="broker-badge-icon">
+                    VIP
+                    <small>Alliances</small>
+                </div>
+                <div class="broker-content">
+                    <h4>International Broker Alliances &amp; Confidentiality</h4>
+                    <p>
+                        Through strategic alliances with leading international brokers worldwide, Omar Al-Sarhan has secured exclusive VIP account frameworks upholding the highest standards of confidentiality, capital security, and non-custodial trade execution.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Callout -->
+            <div class="callout-box">
+                <div class="callout-stat">250+</div>
+                <div class="callout-text">
+                    <strong>Global Traders Successfully Trained:</strong> Omar Al-Sarhan has personally coached hundreds of students worldwide through FINTEC, transforming novices into disciplined, risk-conscious market professionals.
+                </div>
+            </div>
+        </div>
+
+        <footer class="doc-footer">
+            <div class="doc-footer-left">Omar Al-Sarhan &bull; International Business Operator</div>
+            <div class="doc-footer-right">PAGE 03</div>
+        </footer>
+    </section>
+
+    <!-- ========================================================
+         PAGE 4: RISK PHILOSOPHY, STRATEGIC VISION & ENGAGEMENT
+         ======================================================== -->
+    <section class="page">
+        <div class="page-watermark">03</div>
+
+        <header class="doc-header">
+            <div class="doc-header-brand">Omar Al-Sarhan<span>.</span></div>
+            <div class="doc-header-tag">03 / Risk Framework &amp; Vision</div>
+        </header>
+
+        <div class="content-body">
+            <div>
+                <div class="section-eyebrow">Governance &amp; Strategy</div>
+                <h2 class="section-title">Institutional Risk &amp; <span>Global Vision</span></h2>
+            </div>
+
+            <!-- Risk Management Section -->
+            <div class="risk-highlight">
+                <div class="risk-badge-large">The 3% Maximum Risk Rule</div>
+                <p style="font-size: 8pt; color: #cbd5e1; line-height: 1.48; margin-bottom: 2mm;">
+                    Our risk management architecture is grounded in an uncompromising, conservative doctrine: <strong>maximum capital exposure on any individual trade is strictly capped at 3% of total portfolio balance</strong>. This guarantees that capital preservation remains paramount.
+                </p>
+
+                <div class="risk-principle-grid">
+                    <div class="risk-principle-card">
+                        <h5>Capital Preservation First</h5>
+                        <p>Aggressive mitigation protocols designed to ensure no single market anomaly threatens account longevity.</p>
+                    </div>
+                    <div class="risk-principle-card">
+                        <h5>Asymmetric Risk/Reward</h5>
+                        <p>Disciplined entry filters ensuring upside targets consistently outperform down-side risk bounds.</p>
+                    </div>
+                    <div class="risk-principle-card">
+                        <h5>Institutional Confidentiality</h5>
+                        <p>High-security broker relationships with VIP segregations protecting transaction privacy.</p>
+                    </div>
+                    <div class="risk-principle-card">
+                        <h5>Transparent Execution</h5>
+                        <p>Uncompromising honesty, transparent reporting, and empirical performance metrics for all stakeholders.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5 Strategic Goals -->
+            <div>
+                <div class="section-eyebrow" style="margin-bottom: 1.5mm;">Strategic Roadmap</div>
+                <div class="grid-2">
+                    <div class="goals-container">
+                        <div class="goal-row">
+                            <div class="goal-idx">01</div>
+                            <div class="goal-content">
+                                <h5>Wealth Creation</h5>
+                                <p>Empower clients with actionable systems and account management to compound financial portfolios.</p>
+                            </div>
+                        </div>
+
+                        <div class="goal-row">
+                            <div class="goal-idx">02</div>
+                            <div class="goal-content">
+                                <h5>Educational Excellence</h5>
+                                <p>Constantly evolve FINTEC curricula to reflect modern algorithmic and macroeconomic shifts.</p>
+                            </div>
+                        </div>
+
+                        <div class="goal-row">
+                            <div class="goal-idx">03</div>
+                            <div class="goal-content">
+                                <h5>Client Satisfaction</h5>
+                                <p>Deliver elite, bespoke support while upholding the highest standards of portfolio security.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="goals-container">
+                        <div class="goal-row">
+                            <div class="goal-idx">04</div>
+                            <div class="goal-content">
+                                <h5>Global Reach</h5>
+                                <p>Expand cross-border footprint, bridging Middle Eastern and international financial corridors.</p>
+                            </div>
+                        </div>
+
+                        <div class="goal-row">
+                            <div class="goal-idx">05</div>
+                            <div class="goal-content">
+                                <h5>Innovation Hub</h5>
+                                <p>Establish an institutional lab pioneering algorithmic automation and next-gen trading technologies.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact & Engagement Box -->
+            <div class="contact-final-card">
+                <div class="contact-left">
+                    <h4>Direct Inquiries &amp; Consultations</h4>
+                    <p>Open for private wealth advisory, executive consulting, and global ventures.</p>
+                </div>
+                <div class="contact-details-grid">
+                    <div class="contact-entry">
+                        <span>Direct Email</span>
+                        <a href="mailto:omar.alsarhan141@gmail.com">omar.alsarhan141@gmail.com</a>
+                    </div>
+                    <div class="contact-entry">
+                        <span>Phone / WhatsApp</span>
+                        <a href="tel:+962795717232">+962 79 571 7232</a>
+                    </div>
+                    <div class="contact-entry">
+                        <span>Headquarters</span>
+                        <div>Amman, Jordan</div>
+                    </div>
+                    <div class="contact-entry">
+                        <span>LinkedIn Network</span>
+                        <div>linkedin.com/in/omar-alsarhan</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="doc-footer">
+            <div class="doc-footer-left">Omar Al-Sarhan &bull; International Business Operator</div>
+            <div class="doc-footer-right">PAGE 04</div>
+        </footer>
+    </section>
+
+</body>
+</html>

@@ -1,5 +1,5 @@
 /* ========================================
-   Omar Al Sarhan — Portfolio Scripts
+   Omar Al-Sarhan — Portfolio Scripts
    ======================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -9,10 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     const typedElement = document.getElementById('typed-output');
     const phrases = [
-        'Financial Markets Specialist',
-        'Wealth Management Consultant',
-        'Forex & Crypto Expert',
-        'Entrepreneur & Founder'
+        'International Business Operator',
+        'Founder & CEO | FINTEC',
+        'Financial Markets Consultant',
+        'Forex & Crypto Specialist',
+        'Wealth Management Consultant'
     ];
     let phraseIndex = 0;
     let charIndex = 0;
@@ -183,12 +184,14 @@ document.addEventListener('DOMContentLoaded', () => {
         sr.reveal('.section-heading', { delay: 50 });
         sr.reveal('.section-subtext', { delay: 100 });
         sr.reveal('.hero-greeting', { origin: 'left', delay: 200 });
-        sr.reveal('.hero-name', { origin: 'left', delay: 300 });
-        sr.reveal('.hero-title', { origin: 'left', delay: 400 });
-        sr.reveal('.hero-description', { origin: 'left', delay: 500 });
-        sr.reveal('.hero-cta', { origin: 'left', delay: 600 });
-        sr.reveal('.hero-socials', { origin: 'left', delay: 700 });
-        sr.reveal('.hero-image', { origin: 'right', delay: 400 });
+        sr.reveal('.hero-name', { origin: 'left', delay: 250 });
+        sr.reveal('.hero-role', { origin: 'left', delay: 300 });
+        sr.reveal('.hero-subtitles', { origin: 'left', delay: 350 });
+        sr.reveal('.hero-dynamic-text', { origin: 'left', delay: 400 });
+        sr.reveal('.hero-description', { origin: 'left', delay: 450 });
+        sr.reveal('.hero-cta', { origin: 'left', delay: 500 });
+        sr.reveal('.hero-socials', { origin: 'left', delay: 550 });
+        sr.reveal('.hero-image', { origin: 'right', delay: 350 });
 
         sr.reveal('.about-text', { origin: 'left' });
         sr.reveal('.about-experience', { origin: 'right' });

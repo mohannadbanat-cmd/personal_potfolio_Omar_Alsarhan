@@ -286,12 +286,38 @@ img {
     letter-spacing: -0.02em;
 }
 
-.hero-title {
-    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+.hero-role {
+    font-family: var(--font-heading);
+    font-size: clamp(1.4rem, 3.2vw, 2.1rem);
+    color: var(--gold-light);
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+}
+
+.hero-subtitles {
+    font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.title-sep {
+    color: var(--gold);
+    opacity: 0.8;
+    font-weight: 300;
+}
+
+.hero-dynamic-text {
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
     color: var(--text-secondary);
     font-weight: 400;
-    margin-bottom: 24px;
-    min-height: 2.2em;
+    margin-bottom: 22px;
+    min-height: 1.8em;
 }
 
 .typed-text {
@@ -431,9 +457,20 @@ img {
 
 .about-subtitle {
     font-family: var(--font-heading);
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     color: var(--gold);
+    margin-bottom: 8px;
+}
+
+.about-tagline {
+    font-size: 1.05rem;
+    color: var(--text-primary);
+    font-weight: 500;
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 .about-text p {
@@ -1262,6 +1299,10 @@ img {
     .hero-description {
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .hero-subtitles {
+        justify-content: center;
     }
 
     .hero-cta {
